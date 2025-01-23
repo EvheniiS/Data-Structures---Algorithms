@@ -59,7 +59,7 @@ console.log(hasPairWithSum2([1, 2, 4, 4], 8));  // true
 
 const array1 = ['a', 'b', 'c', 'x'];
 const array2 = ['z', 'y', 'x', ];
-//0(n^2)
+//O(a*b)
 function containsCommonItem(arr1, arr2){
   for (let i =0 ; i < arr1.length; i++){
     for(let j=0; j < arr2.length; j++) {
@@ -68,4 +68,19 @@ function containsCommonItem(arr1, arr2){
     }
   }
   return false
+}
+
+containsCommonItem(array1, array2);
+
+//array1 ==> obj {
+// a: true.
+// b: true.
+// c: true.
+// x: true.
+// a: true.
+//}
+// array2[index] ==== onj.properties
+
+function containsCommonItem2(arr1,arr2){
+
 }
