@@ -1,20 +1,51 @@
-const strings= ['a', 'b', 'c', 'd'];
-const numbers = [1,2,3,4,5];
-// Variable array is somewhere in memory and the computer knows it.
-// When I do array[2], i'm telling the computer, hey go to the array and grab the 3rd item from where the array is stored.
+//Array from scratch
+class MyArray {
+    constructor() {
+        this.length = 0
+        this.data = {}
+    }
+
+    get(index){
+        return this.data
+    }
+
+    push(item) {
+        this.data[this.length] = item;
+        this.length++
+        return this.length;
+    }
+
+    pop() {
+        const lastItem = this.data[this.length-1];
+        delete this.data[this.length-1];
+        this.length--
+        return lastItem;
+    }
+
+    delete(index) {
+        const item =this.date[index];
+        this.shiftItems(index)
+        return this.length
+    }
+
+    shiftItems(index) {
+        for (let i = index; i < this.length - 1; i++ ) {
+            this.data[i] = this.data[i+1]
+        }
+        delete this.data[this.length-1];
+        this.length--;
+    }
+}
 
 
-//push
-strings.push('e');
+const newArray = new MyArray();
 
-//pop
-strings.pop();
-strings.pop();
+newArray.push('Hi');
+newArray.push('You');
+newArray.push('!');
 
-//unshift
-strings.unshift('x')
+// newArray.pop();
+newArray.delete(1);
 
-//splice
-strings.splice(2, 0, 'alien');
-
-console.log(strings)
+console.log(newArray);
+console.log(newArray.get(0));
