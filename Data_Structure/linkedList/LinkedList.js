@@ -15,14 +15,16 @@
 class Node {
     constructor(value) {
         this.value = value,
-        this.next = null
+        this.next = null,
+        this.prev = null
     }
 }
-class LinkedLiset { 
+class DoublyLinkedLiset { 
     constructor (value) {
         this.head =  {
             value: value,
-            next: null
+            next: null,
+            prev: null
         };
         this.teil = this.head;
         this.length = 1
@@ -53,6 +55,9 @@ class LinkedLiset {
     append(value) {
         const newNode = new Node(value);
 
+        
+        newNode.prev = this.tail;
+        this.prev = this.tail
         this.teil.next = newNode;
         this.teil = newNode
         this.length++
@@ -63,7 +68,9 @@ class LinkedLiset {
     prepend(value) {
         const newNode = new Node(value);
 
+        
         newNode.next = this.head;
+        this.head.prev = newNode;
         this.head = newNode;
         this.length++
         
@@ -85,11 +92,14 @@ class LinkedLiset {
         }
         const newNode = new Node(value);
         const leader = this.traversToIndex(index-1);
-        const holdingPointer = leader.next
+        const follower = leader.next
 
         leader.next = newNode;
-        newNode.next = holdingPointer;
+        newNode.next = follower;
+        newNode.prev = leader;
+        follower.prev = newNode;
         this.length++
+        
         return this.printList()
     }
 
@@ -111,10 +121,8 @@ class LinkedLiset {
 
 }
 
-let myLinkedList = new LinkedLiset (10)
+let myLinkedList = new DoublyLinkedLiset(10)
 myLinkedList.append(5)
-myLinkedList.append(16)
-myLinkedList.prepend(1)
-console.log(myLinkedList.insert(2, 99))
-console.log(myLinkedList.remove(2))
+console.log(myLinkedList.append(16))
+
 
