@@ -28,26 +28,6 @@ class LinkedLiset {
         this.length = 1
     }
 
-    append(value) {
-        const newNode = new Node(value);
-
-        this.teil.next = newNode;
-        this.teil = newNode
-        this.length++
-
-        return this.printList();;
-    }
-
-    prepend(value) {
-        const newNode = new Node(value);
-
-        newNode.next = this.head;
-        this.head = newNode;
-        this.length++
-        
-        return this;
-    }
-
 
     printList() {
         const array = [];
@@ -67,6 +47,27 @@ class LinkedLiset {
             counter++
         }
         return currentNode;
+    }
+
+
+    append(value) {
+        const newNode = new Node(value);
+
+        this.teil.next = newNode;
+        this.teil = newNode
+        this.length++
+
+        return this.printList();;
+    }
+
+    prepend(value) {
+        const newNode = new Node(value);
+
+        newNode.next = this.head;
+        this.head = newNode;
+        this.length++
+        
+        return this;
     }
 
     insert(index, value) {
@@ -106,9 +107,7 @@ class LinkedLiset {
         this.length--
 
         return this.printList()
-
     }
-
 
 }
 
