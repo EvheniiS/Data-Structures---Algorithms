@@ -74,7 +74,7 @@ class DoublyLinkedLiset {
         this.head = newNode;
         this.length++
         
-        return this;
+        return this.printList();
     }
 
     insert(index, value) {
@@ -118,11 +118,57 @@ class DoublyLinkedLiset {
 
         return this.printList()
     }
+    
+    reverse(){
+        if(this.length === 1) {
+            console.log("List has only one node, no need to reverse.");
+            return this.head;
+        }
+        
+        let first = this.head;
+        this.tail = this.head;
+        let second = first.next;
+
+        console.log("Starting reversal...");
+        console.log(`Initial head: ${first.value}`);
+        console.log(`Initial tail: ${this.tail.value}`);
+
+        while(second) {
+            console.log(`Current first: ${first.value}`);
+            console.log(`Current second: ${second.value}`);
+            
+            const temp = second.next;
+            console.log(`Next node to process: ${temp ? temp.value : 'null'}`);
+            
+            second.next = first;
+            console.log(`Reversing link: ${second.value} now points to ${first.value}`);
+            
+            first = second;
+            second = temp;
+        }
+
+        this.head.next = null;
+        this.head = first;
+
+        console.log(`Reversal complete. New head: ${this.head.value}`);
+        console.log(`New tail: ${this.tail.value}`);
+        
+        return this;
+    }
 
 }
 
-let myLinkedList = new DoublyLinkedLiset(10)
-myLinkedList.append(5)
-console.log(myLinkedList.append(16))
+let myLinkedList = new LinkedLiset (10)
+myLinkedList.append(15)
+myLinkedList.append(16)
+myLinkedList.prepend(1)
+
+
+console.log(myLinkedList.printList())
+
+console.log(myLinkedList.reverse())
+
+console.log(myLinkedList.printList())
+
 
 
