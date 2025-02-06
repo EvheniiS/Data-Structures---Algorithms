@@ -22,6 +22,22 @@ function findUniqueElement(arr) {
     }
 }
 
+function singleNonDuplicate(arr) {
+    let left = 0, right = arr.length - 1;
+
+    while(left < right) {
+        let mid = Math.floor(left + (right - left) / 2);
+
+        if (arr[mid] === arr[mid ^ 1]) {
+            left = mid + 1; // move right
+        } else {
+            right = mid; //move left
+        }
+    }
+    return arr[left]; // The unique element
+}
+
+
 
 
 console.log(findUniqueElement([4, 3, 2, 3, 4])); // Output: 2
